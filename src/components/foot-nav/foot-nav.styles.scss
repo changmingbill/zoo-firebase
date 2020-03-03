@@ -1,0 +1,13 @@
+
+.page-item{
+    & > .page-link{
+        background-color:rgba(0, 0, 0, 0.5);
+        color:white;
+    }
+    &.active .page-link{
+        background-color: rgba(0, 0, 0, 0.5);
+        border-color: #3A99FC;
+    }
+}
+
+

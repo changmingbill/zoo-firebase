@@ -1,0 +1,17 @@
+$lg-media:992px;
+
+@mixin media-breakpoint-up() {
+    @media only screen and (max-width: $lg-media) {
+            @content;
+     }
+}
+
+.side-bar-col{
+    max-height:1430px;
+    overflow:auto;
+
+    @include media-breakpoint-up{
+        height:auto;
+        overflow:visible;
+    };
+}

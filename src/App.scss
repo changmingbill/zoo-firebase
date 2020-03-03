@@ -1,0 +1,43 @@
+$phones-media:550px;
+
+@mixin phone-width() {
+    @media only screen and (max-width: $phones-media) {
+            @content;
+      }
+}
+
+body{
+  font-family: 'Open Sans Condensed', sans-serif;
+  padding: 20px 60px;
+}
+
+.app-container{
+  margin-top: 70px;
+}
+
+
+a{
+  text-decoration: none;
+  // color: black;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.colletion-item-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px, 1fr));
+
+  @include phone-width{
+    grid-template-columns: 100%;
+  };
+}
+
+.higher-z-index{
+  z-index: 5;
+}
+
+
+
+

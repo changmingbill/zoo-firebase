@@ -1,0 +1,21 @@
+$phones-media:1300px;
+
+@mixin phone-width() {
+    @media only screen and (max-width: $phones-media) {
+            @content;
+      }
+}
+.sub-page{
+    display:flex;
+    flex-direction: column;
+
+    .sub-page__item{
+        display: grid;
+        grid-template-columns:repeat(4,1fr);
+
+        @include phone-width{
+            grid-template-columns:repeat(auto-fit,minmax(200px, 1fr));
+            // grid-template-columns: 100%;
+        };
+    }
+}

@@ -1,0 +1,53 @@
+.preview-button{
+    
+    font-size: 1rem;
+    padding: 3px;
+    padding-bottom: 0;
+    // background-color: #FFDD40;
+    transition: all 0.5s;
+    font-family: 'SEGA LOGO FONT';
+    // color: #9DCFF0;
+    position: relative;
+    
+    & span{
+    transition: 0.5s;
+    cursor: pointer;
+
+    /* span::after表span尾端 */
+    &::after{
+    content: "\00bb";
+    /* color: white; */
+    /* absolute相對於父父層；fixed相對於整個網頁空間；relative相對於父層 */
+    position: absolute;
+    opacity: 0;
+    right:-2px;
+    color: #9DCFF0;
+    transition: 0.5s;
+    }
+
+    &:hover{
+      position: relative;
+      padding-right: 25px;
+      color: #FFB9A1;
+  
+      &::after{
+        opacity: 1;
+        right:0;
+        color: #FFB9A1;
+      }
+    }
+  }
+
+}
+
+.preview-title{
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'SEGA LOGO FONT';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SEGA LOGO FONT'), url('SEGA.woff') format('woff');
+}
+    
