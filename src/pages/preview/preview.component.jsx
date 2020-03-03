@@ -16,7 +16,7 @@ const PreviewPage = ({animals}) => {
             {zoneArray.map((item,idx) => 
                 (
                     <Jumbotron key={idx} fluid className='bg-gradient-warning py-2 mb-0 pr-2 pl-3'>
-                        <h3 className='mb-3 preview-title' style={{color:'#9DCFF0'}}>{item.ch}</h3>
+                        <h3 className='mb-3 preview-title higher-z-index'>{item.ch}</h3>
                         <div className='colletion-item-container'>
                             {
                                 collectionItemSpread(animals, item.en)

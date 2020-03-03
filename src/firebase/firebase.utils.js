@@ -1,17 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import config from './firebase.config';
 
-const config = {
-  apiKey: "AIzaSyCpva0QplLD1eEiWJ8oE4_vOTizP6GWYms",
-  authDomain: "zoo-db-db97c.firebaseapp.com",
-  databaseURL: "https://zoo-db-db97c.firebaseio.com",
-  projectId: "zoo-db-db97c",
-  storageBucket: "zoo-db-db97c.appspot.com",
-  messagingSenderId: "1092352035077",
-  appId: "1:1092352035077:web:6e65fa96964f0c2df44f6c",
-  measurementId: "G-BER5SY8B1N"
-};
 
 firebase.initializeApp(config);
 
