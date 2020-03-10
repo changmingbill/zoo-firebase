@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ZOO
 
-## Available Scripts
+## How To Use 🔧
 
-In the project directory, you can run:
+```bash
+# Clone this repository
+$ git clone https://github.com/changmingbill/zoo-firebase
 
-### `yarn start`
+# Go into the repository
+$ cd zoo-firebase
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Remove current origin repository
+$ git remote remove origin
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# Install dependencies
+$ yarn
 
-### `yarn test`
+# Start development server
+$ yarn start
+```
+## Instructions:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Step 1 - ADD FIREBASE CONFIG
 
-### `yarn build`
+Go to `/src/firebase` create firebase.config and fill your own firebase information, they are as follows:
+```javaScript
+const config = {
+  apiKey: xxx,
+  authDomain: xxx,
+  databaseURL: xxx,
+  projectId: xxx,
+  storageBucket: xxx,
+  messagingSenderId: xxx,
+  appId: xxx,
+  measurementId: xxx
+};
+export default config
+```
+### Step 2 - REPLACE DATA
+Go to `/src/redux/animal/animal.reducer.js` change the key collections' value from `null` to `ANIMALS_DATA` as follows. If you want to user local data instead of using firebase, please skip `next steps`. 
+```javaScript
+import ANIMALS_DATA from './animal.data';
+import AnimalActionType from './animal.type';
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const INITIAL_STATE = {
+    collections: ANIMALS_DATA,
+    isFetching: false,
+    errorMessage: undefined,
+    searchField: ''
+};
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Step 3 - REMOVE `addCollectionAndDocuments` LINE COMMAND
+Go to `/src/App.js` remove 'addCollectionAndDocuments` line command and import addCollectionAndDocuments from `/src/firebase/firebase.utils.js` as follows:
+```javaScript
+import {auth, createUserProfileDocument,addCollectionAndDocuments} from './firebase/firebase.utils';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+...
+}else{
+        setCurrentUser(userAuth);
+        addCollectionAndDocuments('animals', selectAnimalArray.map(({title, name_Ch,Pic01_URL,Pic02_URL, Pic03_URL, Pic04_URL, name_En,  name_Latin, Pic01_ALT, behavior, phylum, classis, order, family, feature, diet, habitat, distribution,crisis,interpretation,location_Ch,location}) => ({title, name_Ch,Pic01_URL,Pic02_URL, Pic03_URL, Pic04_URL, name_En, name_Latin, Pic01_ALT, behavior, phylum, classis, order, family, feature, diet, habitat, distribution,crisis,interpretation,location_Ch,location})));
+      }
+    });
+```
+### Step 4 - ADD `addCollectionAndDocuments` COMMAMD
+You don't need it anymore.
+## Authors
 
-### `yarn eject`
+- **Cliff Chang** - [https://github.com/changmingbill](https://github.com/changmingbill)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## License 📄
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### MIT
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
