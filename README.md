@@ -34,7 +34,10 @@ const config = {
   appId: xxx,
   measurementId: xxx
 };
+<<<<<<< HEAD
 export default config
+=======
+>>>>>>> origin/master
 ```
 ### Step 2 - REPLACE DATA
 Go to `/src/redux/animal/animal.reducer.js` change the key collections' value from `null` to `ANIMALS_DATA` as follows. If you want to user local data instead of using firebase, please skip `next steps`. 
@@ -62,8 +65,13 @@ import {auth, createUserProfileDocument,addCollectionAndDocuments} from './fireb
       }
     });
 ```
+<<<<<<< HEAD
 ### Step 4 - ADD `addCollectionAndDocuments` COMMAMD
 You don't need it anymore.
+=======
+### Step 4 - ADD `addCollectionAndDocuments` LINE COMMAMD
+
+>>>>>>> origin/master
 ## Authors
 
 - **Cliff Chang** - [https://github.com/changmingbill](https://github.com/changmingbill)
@@ -71,4 +79,7 @@ You don't need it anymore.
 ## License 📄
 
 ### MIT
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
